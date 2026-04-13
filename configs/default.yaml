@@ -1,0 +1,51 @@
+seed: 42
+
+paths:
+  data_dir: "./data/Georgia"
+  processed_dir: "./artifacts/processed"
+  model_dir: "./artifacts/models"
+  evaluation_dir: "./artifacts/evaluation"
+  perturbation_dir: "./artifacts/perturbation"
+
+data:
+  sampling_rate: 500
+  target_length: 5000
+  signal_channels: 12
+  clinical_dim: 15
+  handcrafted_dim: 100
+  test_size: 0.15
+  val_size_from_trainval: 0.1765
+
+preprocessing:
+  lowcut: 0.5
+  highcut: 50.0
+  filter_order: 3
+  wavelet: "sym4"
+  wavelet_levels: 5
+  apply_pca: true
+  pca_components: 100
+  use_smote: true
+  augment_normal_class: true
+
+augmentation:
+  noise_std_min: 0.01
+  noise_std_max: 0.03
+  scale_min: 0.85
+  scale_max: 1.15
+  baseline_wander_min: 0.02
+  baseline_wander_max: 0.05
+  probability: 0.7
+
+training:
+  batch_size: 32
+  epochs: 100
+  learning_rate: 0.0005
+  early_stopping_patience: 20
+  label_smoothing: 0.1
+  use_class_weights: true
+  use_attention: true
+  use_tabnet: true
+
+evaluation:
+  threshold: 0.5
+  batch_size: 64
